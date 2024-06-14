@@ -38,8 +38,8 @@ function extractBankInfo(iban: string): InformacionIban {
     banco,
   };
 }
+const resultDiv = document.getElementById("result") as HTMLDivElement;
 function updateResult(iban: string): void {
-  const resultDiv = document.getElementById("result")!;
   const bankInfo = extractBankInfo(iban);
 
   if (bankInfo) {
