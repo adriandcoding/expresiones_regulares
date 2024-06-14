@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id="app">
-      <h1>TypeScript Sandbox</h1>
-    </div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validación de IBAN</title>
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Validación de IBAN</h1>
+    <form id="iban-form">
+      <label for="iban">Introduce el IBAN:</label>
+      <input type="text" id="iban" name="iban" required>
+      <button type="submit">Buscar</button>
+    </form>
+    <div id="result"></div>
+  </div>
+  <script type="module" src="./src/validacion.ts"></script>
+</body>
+
 </html>
