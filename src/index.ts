@@ -12,6 +12,7 @@ if (searchBtn && ibanInput && resultDiv) {
 
     if (!iban) {
       resultDiv.innerHTML = "<p>Por favor, introduce un IBAN.</p>";
+
       return;
     }
 
@@ -24,6 +25,8 @@ if (searchBtn && ibanInput && resultDiv) {
 
     if (bankInfo) {
       resultDiv.innerHTML = `
+      <p><strong>El IBAN está bien formado</strong></p>
+      <p><strong>El IBAN es válido</strong></p>
         <p><strong>Banco:</strong> ${bankInfo.bankName}</p>
         <p><strong>Oficina:</strong> ${bankInfo.office}</p>
         <p><strong>Dígito de control:</strong> ${bankInfo.controlDigit}</p>

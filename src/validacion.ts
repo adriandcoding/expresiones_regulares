@@ -1,12 +1,5 @@
 import * as IBAN from "ibantools";
 
-interface BankInfo {
-  bankName: string;
-  office: string;
-  controlDigit: string;
-  accountNumber: string;
-}
-
 function validateIBAN(iban: string): boolean {
   // Remover espacios y guiones del IBAN
   const cleanIBAN = iban.replace(/[\s\-]/g, "");
