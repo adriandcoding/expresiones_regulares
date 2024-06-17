@@ -15,5 +15,11 @@
     "noImplicitReturns": true,
     "skipLibCheck": true
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "src/model.ts",
+    "src/validacion.ts",
+    "src/vite-env.d.ts",
+    "src/index.ts"
+  ]
 }
