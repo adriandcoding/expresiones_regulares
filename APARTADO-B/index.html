@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id="app">
-      <h1>TypeScript Sandbox</h1>
-    </div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="./src/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extracción de Imágenes</title>
+</head>
+
+<body>
+
+  <h1>Extractor de Imágenes</h1>
+  <textarea id="htmlInput" placeholder="Pega aquí el contenido HTML"></textarea>
+  <button id="extractButton">Extraer enlaces a imágenes</button>
+
+  <div class="image-links" id="imageLinks"></div>
+  <div class="image-grid" id="imageGrid"></div>
+
+
+  <script type="module" src="./src/main.ts"></script>
+</body>
+
 </html>
