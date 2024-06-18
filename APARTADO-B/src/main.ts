@@ -1,6 +1,6 @@
-function extraerLinksDeImágenes(links: string): string[] {
+const extraerLinksDeImágenes = (links: string): string[] => {
   const imgRegex = /<img[^>]+src="([^">]+)"/g;
-  let linksEncontrados;
+  let linksEncontrados: RegExpExecArray | null;
   let linksDeImágenes: string[] = [];
 
   while ((linksEncontrados = imgRegex.exec(links)) !== null) {
@@ -8,48 +8,57 @@ function extraerLinksDeImágenes(links: string): string[] {
   }
 
   return linksDeImágenes;
-}
+};
 
-function pintarDivImágenes(links: string[], container: HTMLElement): void {
-  container.innerHTML = "";
+const pintarDivImágenes = (links: string[]): void => {
+  const container = document.getElementById("image-links");
 
-  const divPintado = document.createElement("div");
-  divPintado.classList.add("image-divPintado");
+  if (container && container instanceof HTMLDivElement) {
+    container.innerHTML = "";
 
-  links.forEach((link) => {
-    const item = document.createElement("div");
-    item.classList.add("image-item");
+    const divPintado = document.createElement("div");
+    divPintado.classList.add("image-divPintado");
 
-    const img = document.createElement("img");
-    img.src = link;
+    links.forEach((link) => {
+      const item = document.createElement("div");
+      item.classList.add("image-item");
 
-    item.appendChild(img);
-    divPintado.appendChild(item);
-  });
+      const img = document.createElement("img");
+      img.src = link;
 
-  container.appendChild(divPintado);
-}
+      item.appendChild(img);
+      divPintado.appendChild(item);
+    });
+
+    container.appendChild(divPintado);
+  }
+};
+
 document.addEventListener("DOMContentLoaded", () => {
-  const botónExtraer = document.getElementById("extraerBtn")!;
+  const botónExtraer = document.getElementById("extraerBtn");
   const contenidoTextArea = document.getElementById(
     "textarea"
-  )! as HTMLTextAreaElement;
-  const linksDeImágenesContainer = document.getElementById("image-links")!;
+  ) as HTMLTextAreaElement;
+  const linksDeImágenesContainer = document.getElementById("image-links");
 
-  botónExtraer.addEventListener("click", () => {
-    const contenidoTextarea = contenidoTextArea.value.trim();
-    if (contenidoTextarea === "") {
-      alert("El área de texto está vacía. Por favor, pega el contenido HTML.");
-      return;
-    }
+  if (botónExtraer && contenidoTextArea && linksDeImágenesContainer) {
+    botónExtraer.addEventListener("click", () => {
+      const contenidoTextarea = contenidoTextArea.value.trim();
+      if (contenidoTextarea === "") {
+        alert(
+          "El área de texto está vacía. Por favor, pega el contenido HTML."
+        );
+        return;
+      }
 
-    const linksDeImágenes = extraerLinksDeImágenes(contenidoTextarea);
+      const linksDeImágenes = extraerLinksDeImágenes(contenidoTextarea);
 
-    if (linksDeImágenes.length > 0) {
-      pintarDivImágenes(linksDeImágenes, linksDeImágenesContainer);
-    } else {
-      linksDeImágenesContainer.innerHTML =
-        "<p>No se encontraron enlaces a imágenes.</p>";
-    }
-  });
+      if (linksDeImágenes.length > 0) {
+        pintarDivImágenes(linksDeImágenes);
+      } else {
+        linksDeImágenesContainer.innerHTML =
+          "<p>No se encontraron enlaces a imágenes.</p>";
+      }
+    });
+  }
 });
