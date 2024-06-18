@@ -19,7 +19,7 @@ const pintarDivImágenes = (links: string[]): void => {
     const divPintado = document.createElement("div");
     divPintado.classList.add("image-divPintado");
 
-    links.forEach((link) => {
+    links.forEach((link): void => {
       const item = document.createElement("div");
       item.classList.add("image-item");
 
