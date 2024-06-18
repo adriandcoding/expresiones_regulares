@@ -54,41 +54,12 @@ button {
 button:hover {
   background: linear-gradient(to right, #98ff9f, #24b3f1);
 }
-
-.image-links {
-  margin-top: 20px;
+.image-item img {
+  height: 200px;
+  padding: 32px;
 }
 
-.image-links a {
-  display: block;
-  margin-bottom: 5px;
-  color: #007bff;
-  text-decoration: none;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.image-links a:hover {
-  text-decoration: underline;
-}
-
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.image-grid img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 4px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-}
-
-.image-grid img:hover {
-  transform: scale(1.05);
+.image-divPintado {
+  display: flex;
+  flex-wrap: wrap;
 }
