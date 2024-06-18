@@ -1,20 +1,20 @@
 const extraerLinksDeImágenes = (links: string): string[] => {
   const imgRegex = /<img[^>]+src="([^">]+)"/g;
-  let linksEncontrados: RegExpExecArray | null;
   let linksDeImágenes: string[] = [];
 
-  while ((linksEncontrados = imgRegex.exec(links)) !== null) {
-    linksDeImágenes.push(linksEncontrados[1]);
-  }
+  links.replace(imgRegex, (html, linksImágenes): string => {
+    linksDeImágenes.push(linksImágenes);
+    return html;
+  });
 
   return linksDeImágenes;
 };
 
 const pintarDivImágenes = (links: string[]): void => {
-  const container = document.getElementById("image-links");
+  const divImágenes = document.getElementById("image-links");
 
-  if (container && container instanceof HTMLDivElement) {
-    container.innerHTML = "";
+  if (divImágenes && divImágenes instanceof HTMLDivElement) {
+    divImágenes.innerHTML = "";
 
     const divPintado = document.createElement("div");
     divPintado.classList.add("image-divPintado");
@@ -30,7 +30,7 @@ const pintarDivImágenes = (links: string[]): void => {
       divPintado.appendChild(item);
     });
 
-    container.appendChild(divPintado);
+    divImágenes.appendChild(divPintado);
   }
 };
 
@@ -39,9 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const contenidoTextArea = document.getElementById(
     "textarea"
   ) as HTMLTextAreaElement;
-  const linksDeImágenesContainer = document.getElementById("image-links");
+  const divImágenes = document.getElementById("image-links");
 
-  if (botónExtraer && contenidoTextArea && linksDeImágenesContainer) {
+  if (botónExtraer && contenidoTextArea && divImágenes) {
     botónExtraer.addEventListener("click", () => {
       const contenidoTextarea = contenidoTextArea.value.trim();
       if (contenidoTextarea === "") {
@@ -56,8 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (linksDeImágenes.length > 0) {
         pintarDivImágenes(linksDeImágenes);
       } else {
-        linksDeImágenesContainer.innerHTML =
-          "<p>No se encontraron enlaces a imágenes.</p>";
+        divImágenes.innerHTML = "<p>No se encontraron enlaces a imágenes.</p>";
       }
     });
   }
